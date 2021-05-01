@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
+import Checkout from "./Checkout";
 import { useReducer } from "react";
 
 const reducerFunction = (state, action) => {
@@ -36,7 +37,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        {state.count}
+        {/* {state.count}
         <button onClick={() => dispatch({ type: "increment" })}>
           increment
         </button>
@@ -45,13 +46,14 @@ function App() {
         </button>
         <button onClick={() => dispatch({ type: "initCount", payload: 0 })}>
           Initialize
-        </button>
+        </button> */}
         {/* <AppState>
           {" "} */}
         <Switch>
           <Route path="/checkout">
             <Header></Header>
             <h1>Checkout</h1>
+            <Checkout></Checkout>
           </Route>
           <Route path="/login">
             <h1>Login</h1>
