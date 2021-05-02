@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
 import Checkout from "./Checkout";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
+import Login from "./Login";
+import { auth } from "./firebase";
 
 const reducerFunction = (state, action) => {
   switch (action.type) {
@@ -34,6 +36,24 @@ const initialState = {
 function App() {
   const [state, dispatch] = useReducer(reducerFunction, initialState);
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        //user has logged in
+        console.log(authUser);
+
+        dispatch({ type: "SET_USER", user: authUser });
+        console.log("App");
+        console.log(state);
+      } else {
+        dispatch({ type: "SET_USER", user: null });
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   return (
     <Router>
       <div className="app">
@@ -57,6 +77,7 @@ function App() {
           </Route>
           <Route path="/login">
             <h1>Login</h1>
+            <Login></Login>
           </Route>
           <Route path="/">
             <Header></Header>

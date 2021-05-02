@@ -10,9 +10,12 @@ function reducer(state, action) {
   //   console.log(action);
   //   console.log(state);
   switch (action.type) {
+    case "SET_USER":
+      return { ...state, user: action.user };
+    // break;
     case "ADD_TO_BASKET":
       return { ...state, basket: [...state.basket, action.item] };
-      break;
+    //break;
     case "REMOVE_FROM_BASKET":
       //Logic for adding item
       let tempBasket = [...state.basket];
