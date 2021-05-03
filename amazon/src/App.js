@@ -6,35 +6,36 @@ import Checkout from "./Checkout";
 import { useEffect, useReducer } from "react";
 import Login from "./Login";
 import { auth } from "./firebase";
+import { useStateValue } from "./StatePeovider";
 
-const reducerFunction = (state, action) => {
-  switch (action.type) {
-    case "increment":
-      return {
-        ...state,
-        count: state.count + 1,
-      };
-    case "decrement":
-      return {
-        ...state,
-        count: state.count - 1,
-      };
-    case "initCount":
-      return {
-        ...state,
-        count: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+// const reducerFunction = (state, action) => {
+//   switch (action.type) {
+//     case "increment":
+//       return {
+//         ...state,
+//         count: state.count + 1,
+//       };
+//     case "decrement":
+//       return {
+//         ...state,
+//         count: state.count - 1,
+//       };
+//     case "initCount":
+//       return {
+//         ...state,
+//         count: action.payload,
+//       };
+//     default:
+//       return state;
+//   }
+// };
 
-const initialState = {
-  count: 0,
-};
+// const initialState = {
+//   count: 0,
+// };
 
 function App() {
-  const [state, dispatch] = useReducer(reducerFunction, initialState);
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -43,8 +44,6 @@ function App() {
         console.log(authUser);
 
         dispatch({ type: "SET_USER", user: authUser });
-        console.log("App");
-        console.log(state);
       } else {
         dispatch({ type: "SET_USER", user: null });
       }
@@ -54,6 +53,9 @@ function App() {
       unsubscribe();
     };
   }, []);
+
+  console.log("App");
+  console.log(user);
   return (
     <Router>
       <div className="app">
