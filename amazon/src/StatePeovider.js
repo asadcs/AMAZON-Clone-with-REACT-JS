@@ -30,6 +30,8 @@ export const useStateValue = () => useContext(StateContext);
 
 //Step 12 : {basket.length} can provide the value of basket
 
+//https://www.crio.do/projects/react-amazon-clone/
+
 // 1) Urgent: Position Title: ASP .Net MVC Developers (20+ positions) | E: 3-15Years | S: 120k-200k | Night Shift
 // Client: Leading IT Co. in Shahrah E Faisal, Karachi with 100-200 employees
 // 2) Urgent: Position Title: VB.Net Developer | E: 1-5Years | S: 60k-100k | Day Shift
