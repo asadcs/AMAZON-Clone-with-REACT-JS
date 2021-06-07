@@ -16,3 +16,7 @@ Create header/navigation bar to navigate between pages.
 Create a home page to display products.
 Create a login page for user login.
 Add functionalities like basket, payment and authentication.
+
+
+<h4>Preview</h4>
+<a href="https://user-images.githubusercontent.com/11515267/120982573-b770a280-c72d-11eb-9dff-6bde4a3f3700.gif"><img src="https://user-images.githubusercontent.com/11515267/120982573-b770a280-c72d-11eb-9dff-6bde4a3f3700.gif"/></a>
